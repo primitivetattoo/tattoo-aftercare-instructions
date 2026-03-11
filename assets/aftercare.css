@@ -1,0 +1,401 @@
+/* Tattoo Aftercare Instructions — Frontend */
+
+.ptba-aftercare-wrap {
+    --ptba-accent: #C9A227;
+    --ptba-bg: #1a1a1a;
+    --ptba-card: #242424;
+    --ptba-card-active: #2a2a2a;
+    --ptba-border: rgba(255,255,255,0.08);
+    --ptba-text: #e0e0e0;
+    --ptba-text-muted: #999;
+    --ptba-white: #fff;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--ptba-bg);
+    color: var(--ptba-text);
+    border-radius: 16px;
+    padding: 40px 32px;
+    max-width: 720px;
+    margin: 32px auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.ptba-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.ptba-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ptba-white);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.ptba-header p {
+    font-size: 15px;
+    color: var(--ptba-text-muted);
+    margin: 0;
+}
+
+/* Day Tracker */
+.ptba-tracker {
+    background: var(--ptba-card);
+    border: 1px solid var(--ptba-border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.ptba-tracker label {
+    display: block;
+    font-size: 14px;
+    color: var(--ptba-text-muted);
+    margin-bottom: 12px;
+}
+
+.ptba-tracker input[type="date"] {
+    background: var(--ptba-bg);
+    border: 1px solid var(--ptba-border);
+    color: var(--ptba-white);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.ptba-tracker input[type="date"]:focus {
+    outline: none;
+    border-color: var(--ptba-accent);
+}
+
+.ptba-tracker-result {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ptba-accent);
+    display: none;
+}
+
+.ptba-tracker-result.visible {
+    display: block;
+}
+
+.ptba-tracker-phase {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ptba-text-muted);
+}
+
+/* Timeline */
+.ptba-timeline {
+    position: relative;
+    padding-left: 32px;
+}
+
+.ptba-timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--ptba-border);
+}
+
+/* Phase */
+.ptba-phase {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.ptba-phase-dot {
+    position: absolute;
+    left: -32px;
+    top: 20px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--ptba-card);
+    border: 2px solid var(--ptba-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    z-index: 1;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.ptba-phase.active .ptba-phase-dot {
+    border-color: var(--ptba-accent);
+    background: var(--ptba-accent);
+}
+
+.ptba-phase.completed .ptba-phase-dot {
+    border-color: #22c55e;
+    background: #22c55e;
+}
+
+.ptba-phase.completed .ptba-phase-dot::after {
+    content: '✓';
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ptba-phase-toggle {
+    background: var(--ptba-card);
+    border: 1px solid var(--ptba-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.ptba-phase-toggle:hover {
+    background: var(--ptba-card-active);
+    border-color: rgba(255,255,255,0.12);
+}
+
+.ptba-phase.active .ptba-phase-toggle {
+    border-color: var(--ptba-accent);
+    background: var(--ptba-card-active);
+}
+
+.ptba-phase-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 36px;
+    text-align: center;
+}
+
+.ptba-phase-info {
+    flex: 1;
+}
+
+.ptba-phase-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ptba-white);
+    margin: 0 0 2px 0;
+}
+
+.ptba-phase-days {
+    font-size: 12px;
+    color: var(--ptba-text-muted);
+}
+
+.ptba-phase-arrow {
+    color: var(--ptba-text-muted);
+    font-size: 18px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+}
+
+.ptba-phase.open .ptba-phase-arrow {
+    transform: rotate(180deg);
+}
+
+/* Instructions */
+.ptba-phase-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.ptba-phase-instructions {
+    padding: 16px 20px 20px;
+    margin: 0 0 0 0;
+}
+
+.ptba-phase-instructions li {
+    position: relative;
+    padding: 8px 0 8px 24px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ptba-text);
+    list-style: none;
+    border-bottom: 1px solid var(--ptba-border);
+}
+
+.ptba-phase-instructions li:last-child {
+    border-bottom: none;
+}
+
+.ptba-phase-instructions li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--ptba-accent);
+    opacity: 0.6;
+}
+
+/* Warning / Emergency */
+.ptba-emergency {
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.ptba-emergency-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.ptba-emergency p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #fca5a5;
+    margin: 0;
+}
+
+/* Studio Contact */
+.ptba-studio {
+    background: var(--ptba-card);
+    border: 1px solid var(--ptba-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.ptba-studio-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ptba-white);
+    margin: 0 0 8px 0;
+}
+
+.ptba-studio-contact {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.ptba-studio-contact a {
+    color: var(--ptba-accent);
+    text-decoration: none;
+    font-size: 13px;
+    transition: opacity 0.2s;
+}
+
+.ptba-studio-contact a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Footer actions */
+.ptba-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.ptba-btn-print {
+    background: transparent;
+    border: 1px solid var(--ptba-border);
+    color: var(--ptba-text-muted);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ptba-btn-print:hover {
+    border-color: var(--ptba-accent);
+    color: var(--ptba-accent);
+}
+
+/* Print styles */
+@media print {
+    .ptba-aftercare-wrap {
+        background: #fff !important;
+        color: #333 !important;
+        padding: 20px !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+    }
+
+    .ptba-phase-body {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    .ptba-phase-toggle {
+        background: none !important;
+        border: none !important;
+        padding: 10px 0 !important;
+    }
+
+    .ptba-phase-title { color: #333 !important; }
+    .ptba-phase-instructions li { color: #333 !important; border-color: #eee !important; }
+    .ptba-phase-instructions li::before { background: #333 !important; }
+    .ptba-phase-dot { display: none !important; }
+    .ptba-timeline::before { display: none !important; }
+    .ptba-timeline { padding-left: 0 !important; }
+    .ptba-tracker, .ptba-actions { display: none !important; }
+    .ptba-phase-arrow { display: none !important; }
+    .ptba-emergency { background: #fff3f3 !important; border-color: #fcc !important; }
+    .ptba-emergency p { color: #c00 !important; }
+    .ptba-studio { background: #f9f9f9 !important; border-color: #ddd !important; }
+    .ptba-studio-name { color: #333 !important; }
+    .ptba-studio-contact a { color: #333 !important; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .ptba-aftercare-wrap {
+        padding: 24px 16px;
+        margin: 16px auto;
+        border-radius: 12px;
+    }
+
+    .ptba-header h2 {
+        font-size: 22px;
+    }
+
+    .ptba-phase-toggle {
+        padding: 14px 16px;
+        gap: 10px;
+    }
+
+    .ptba-phase-title {
+        font-size: 14px;
+    }
+
+    .ptba-phase-instructions {
+        padding: 12px 16px 16px;
+    }
+
+    .ptba-studio-contact {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

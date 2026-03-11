@@ -1,0 +1,87 @@
+/* PTBA Admin Styles */
+
+.ptba-admin-wrap {
+    max-width: 900px;
+}
+
+.ptba-admin-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin: 16px 0;
+}
+
+.ptba-admin-card h2 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0;
+    border: none;
+}
+
+.ptba-admin-card .form-table th {
+    width: 160px;
+    padding: 12px 10px 12px 0;
+}
+
+.ptba-admin-card .form-table td {
+    padding: 12px 0;
+}
+
+.ptba-phase-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.ptba-phase-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.ptba-input-icon {
+    width: 40px;
+    text-align: center;
+    font-size: 18px;
+    padding: 4px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+}
+
+.ptba-input-title {
+    flex: 1;
+    min-width: 200px;
+    padding: 6px 10px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ptba-day-range {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #666;
+}
+
+.ptba-input-day {
+    width: 60px;
+    padding: 4px 6px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.ptba-instructions {
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.6;
+}
