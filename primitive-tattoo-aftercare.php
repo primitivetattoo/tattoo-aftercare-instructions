@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Tattoo Aftercare Instructions
  * Description: Interactive aftercare timeline with personalized day tracker and printable instructions. Use shortcode [tattoo_aftercare].
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Primitive Tattoo Bali
  * Author URI: https://primitivetattoo.com
  * Plugin URI: https://github.com/primitivetattoo/tattoo-aftercare-instructions
@@ -15,7 +15,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'PTBA_VERSION', '1.0.0' );
+define( 'PTBA_VERSION', '1.0.1' );
 define( 'PTBA_URL', plugin_dir_url( __FILE__ ) );
 define( 'PTBA_PATH', plugin_dir_path( __FILE__ ) );
 

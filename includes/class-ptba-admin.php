@@ -109,7 +109,18 @@ class PTBA_Admin {
     public static function get_settings() {
         $saved    = get_option( 'ptba_settings', array() );
         $defaults = self::get_defaults();
-        return wp_parse_args( $saved, $defaults );
+        $merged   = wp_parse_args( $saved, $defaults );
+
+        // Deep merge: if saved phases have empty instructions, restore defaults
+        if ( ! empty( $merged['phases'] ) ) {
+            foreach ( $merged['phases'] as $i => $phase ) {
+                if ( empty( $phase['instructions'] ) && isset( $defaults['phases'][ $i ] ) ) {
+                    $merged['phases'][ $i ]['instructions'] = $defaults['phases'][ $i ]['instructions'];
+                }
+            }
+        }
+
+        return $merged;
     }
 
     public function add_menu() {
@@ -256,7 +267,7 @@ class PTBA_Admin {
                                 <input type="number" name="ptba_settings[phases][<?php echo intval( $i ); ?>][day_end]" value="<?php echo intval( $phase['day_end'] ); ?>" min="0" class="ptba-input-day">
                             </label>
                         </div>
-                        <textarea name="ptba_settings[phases][<?php echo intval( $i ); ?>][instructions]" rows="5" class="large-text ptba-instructions"><?php echo esc_textarea( implode( "\n", $phase['instructions'] ) ); ?></textarea>
+                        <textarea name="ptba_settings[phases][<?php echo intval( $i ); ?>][instructions]" rows="5" class="large-text ptba-instructions" placeholder="<?php esc_attr_e( 'Enter one instruction per line, e.g.:', 'tattoo-aftercare' ); ?>&#10;<?php esc_attr_e( 'Wash gently with lukewarm water and fragrance-free soap', 'tattoo-aftercare' ); ?>&#10;<?php esc_attr_e( 'Pat dry with a clean paper towel', 'tattoo-aftercare' ); ?>&#10;<?php esc_attr_e( 'Apply a thin layer of aftercare ointment', 'tattoo-aftercare' ); ?>"><?php echo esc_textarea( implode( "\n", $phase['instructions'] ) ); ?></textarea>
                     </div>
                     <?php endforeach; ?>
                 </div>

@@ -154,7 +154,8 @@
     border-radius: 12px;
     padding: 18px 20px;
     cursor: pointer;
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
     gap: 14px;
     width: 100%;
@@ -162,14 +163,30 @@
     transition: background 0.2s, border-color 0.2s;
 }
 
-.ptba-phase-toggle:hover {
-    background: var(--ptba-card-active);
-    border-color: rgba(255,255,255,0.12);
+.ptba-phase-toggle:hover,
+.ptba-aftercare-wrap .ptba-phase-toggle:hover {
+    background: var(--ptba-card-active) !important;
+    border-color: rgba(255,255,255,0.12) !important;
 }
 
-.ptba-phase.active .ptba-phase-toggle {
-    border-color: var(--ptba-accent);
-    background: var(--ptba-card-active);
+/* Theme-proof: prevent themes from overriding button styles */
+.ptba-aftercare-wrap button.ptba-phase-toggle {
+    background: var(--ptba-card) !important;
+    border: 1px solid var(--ptba-border) !important;
+    color: var(--ptba-text) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: normal !important;
+    line-height: normal !important;
+}
+
+.ptba-phase.active .ptba-phase-toggle,
+.ptba-aftercare-wrap .ptba-phase.active .ptba-phase-toggle {
+    border-color: var(--ptba-accent) !important;
+    background: var(--ptba-card-active) !important;
+    color: var(--ptba-text) !important;
 }
 
 .ptba-phase-icon {
