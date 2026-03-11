@@ -7,7 +7,7 @@ A WordPress plugin that displays an interactive aftercare timeline for tattoo st
 ![License](https://img.shields.io/badge/License-GPL--2.0--or--later-green)
 ![Version](https://img.shields.io/badge/Version-1.0.1-gold)
 
-**[See it live](https://primitivetattoobali.com/tattoo-aftercare/)**
+**[Live Demo — Tattoo Aftercare Instructions](https://primitivetattoobali.com/tattoo-aftercare/)**
 
 ## Features
 
